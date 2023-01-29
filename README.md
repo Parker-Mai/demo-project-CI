@@ -1,3 +1,3 @@
 CodeIgniter Side Project
 
-CodeOgniter Practice
+CodeIgniter Practice
