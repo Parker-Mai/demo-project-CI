@@ -13,3 +13,10 @@
  *
  * @see: https://codeigniter4.github.io/CodeIgniter4/
  */
+
+ function print_a($value)
+ {
+    echo "<pre>";
+    print_r($value);
+    echo "</pre>";   
+ }

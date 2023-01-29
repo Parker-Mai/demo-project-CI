@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Controllers\Accounts;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -29,7 +31,27 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+// $routes->get('/', 'Home::index');
+
+$routes->group('backend',static function($routes){
+
+    $routes->group('accounts',static function($routes){
+
+        $routes->get('/',[Accounts::class,'list']);
+
+        $routes->match(['get', 'post'],'create',[Accounts::class,'create']);
+        $routes->match(['get', 'put'],'update/(:num)',[Accounts::class,'update']);
+        
+        $routes->delete('delete/(:num)',[Accounts::class,'delete']);
+        // $routes->get('create',[Accounts::class,'create']);
+        // $routes->post('create',[Accounts::class,'create']);
+
+    });
+    
+
+});
+
+
 
 /*
  * --------------------------------------------------------------------
